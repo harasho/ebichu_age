@@ -4,10 +4,13 @@ require "date"
 today = Date.today
 puts "Enter you birth year:"
 year = gets.chomp.to_i
+
 puts "Enter you birth month:"
 month = gets.chomp.to_i
+
 puts "Enter you birth day:"
 day = gets.chomp.to_i
+
 birthday = Date.new(year, month, day)
 age = today.year - birthday.year
 if today.month < birthday.month or (today.month == birthday.month and today.day < birthday.day)
