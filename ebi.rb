@@ -1,22 +1,19 @@
 #!/usr/bin/ruby
 
 require "date"
-today = Date.today
-puts "Enter you birth year:"
-year = gets.chomp.to_i
 
-puts "Enter you birth month:"
-month = gets.chomp.to_i
+def ebi_age(year, month, day)
+  today = Date.today
+  birthday = Date.new(year, month, day)
+  age = today.year - birthday.year
 
-puts "Enter you birth day:"
-day = gets.chomp.to_i
-
-birthday = Date.new(year, month, day)
-age = today.year - birthday.year
-if today.month < birthday.month or (today.month == birthday.month and today.day < birthday.day)
-  age -= 1 # まだ誕生日を迎えていない
+  if today.month < birthday.month or (today.month == birthday.month and today.day < birthday.day)
+    age -= 1 # まだ誕生日を迎えていない
+  end
+ 
+  puts "あなたは#{age}歳です"
+  chugaku = age - 12
+  puts "あなたは中学#{chugaku}年生です"
 end
 
-puts "あなたは#{age}歳です"
-chugaku = age - 12
-puts "あなたは中学#{chugaku}年生です"
+ebi_age(2002,3,11)
