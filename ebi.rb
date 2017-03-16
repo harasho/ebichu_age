@@ -16,4 +16,7 @@ def ebi_age(year, month, day)
   puts "あなたは中学#{chugaku}年生です"
 end
 
+member = ["真山りか", "安本彩花", "廣田あいか", "星名美怜", "松野莉奈", "柏木ひなた", "小林歌穂", "中山莉子"]
+puts "私立恵比寿中学のメンバには#{member.sample}がいます"
+
 ebi_age(2002,3,11)
