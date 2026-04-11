@@ -4,6 +4,8 @@ require 'date'
 
 # 中学在学とみなす開始年齢
 MIDDLE_SCHOOL_START_AGE = 12
+# 小学在学とみなす開始年齢
+ELEMENTARY_SCHOOL_START_AGE = 6
 
 ##
 # 指定した生年月日から現在の年齢を計算し
@@ -23,8 +25,14 @@ def ebi_age(year, month, day)
     age -= 1 # まだ誕生日を迎えていない
   end
 
-  middle_school_year = age - MIDDLE_SCHOOL_START_AGE
-  "あなたは#{age}才です。中学#{middle_school_year}年生です"
+  if age < ELEMENTARY_SCHOOL_START_AGE
+    "あなたは#{age}才です。未就学児です"
+  elsif age < MIDDLE_SCHOOL_START_AGE
+    "あなたは#{age}才です。小学生です"
+  else
+    middle_school_year = age - (MIDDLE_SCHOOL_START_AGE - 1)
+    "あなたは#{age}才です。中学#{middle_school_year}年生です"
+  end
 end
 
 #members = ["真山りか", "安本彩花", "廣田あいか", "星名美怜", "松野莉奈", "柏木ひなた", "小林歌穂", "中山莉子"]
