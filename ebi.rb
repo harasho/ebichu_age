@@ -35,5 +35,41 @@ def ebi_age(year, month, day)
   end
 end
 
-#members = ["真山りか","安本彩花","廣田あいか","星名美怜","松野莉奈","柏木ひなた","小林歌穂","中山莉子"]
-#puts "私立恵比寿中学のメンバーには#{members.sample}がいます"
+def usage
+  <<~TEXT
+    使い方:
+      ruby ebi.rb YEAR MONTH DAY
+
+    例:
+      ruby ebi.rb 2000 1 1
+  TEXT
+end
+
+if __FILE__ == $PROGRAM_NAME
+  if ARGV.length != 3
+    warn usage
+    exit 1
+  end
+
+  begin
+    year, month, day = ARGV.map(&:to_i)
+    puts ebi_age(year, month, day)
+  rescue ArgumentError => e
+    warn "日付が正しくありません: #{e.message}"
+    warn usage
+    exit 1
+  end
+end
+
+# 私立恵比寿中学 メンバー変遷（簡易メモ）
+# - 初期メンバー（結成当初から活動）:
+#   真山りか / 安本彩花 / 廣田あいか / 星名美怜 / 松野莉奈 / 柏木ひなた
+# - 後加入メンバー:
+#   小林歌穂 / 中山莉子
+# - 卒業・転出:
+#   廣田あいか（2018年）, 柏木ひなた（2022年）
+# - 逝去:
+#   松野莉奈（2017年）
+#
+# members = ["真山りか", "安本彩花", "星名美怜", "小林歌穂", "中山莉子"]
+# puts "私立恵比寿中学のメンバーには#{members.sample}がいます"
